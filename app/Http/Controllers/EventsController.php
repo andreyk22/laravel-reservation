@@ -52,8 +52,8 @@ class EventsController extends Controller
 
         $event = new Events;
         $event->event_name = $request['event_name'];
-        $event->start_time = $request['start_time'].':00';
-        $event->end_time = $request['end_time'].':00';
+        $event->start_time = $request['start_time'];
+        $event->end_time = $request['end_time'];
         $event->start_date = $request['start_date'];
         $event->end_date = $request['end_date'];
         $event->participants = $request['participants'];

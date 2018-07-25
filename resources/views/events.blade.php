@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Drustveni centar Rudo</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -15,13 +15,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
         <script src="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-             
+        
         {!! $calendar_details->script() !!}
-       
+        
         
     </head>
     <body>
             <div class="content">
+            <div class="jumbotron">
+            <h2 align="center">Drustveni centar Rudo</h2>
+            <!-- <h3 align="center">Rezervacije</h3> -->
+            </div>
               <!-- CONTENT PART -->
                 <div class="container">
                     <div class="panel panel-primary">
@@ -138,6 +142,23 @@
                                 {!! $calendar_details->calendar() !!}
                             </div>
                     </div>
+                    <!-- TESTING -->
+                    <div id="fullCalModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>
+            <div id="modalBody" class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary"><a id="eventUrl" target="_blank">Event Page</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+                    <!-- TESTING END -->
 
               </div>
             </div>

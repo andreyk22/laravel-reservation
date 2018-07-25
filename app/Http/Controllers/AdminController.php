@@ -13,11 +13,28 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+     public function index()
     {
         $status = 'pending';
         $events = Events::where('status', $status)->get();
         return view('admin')->with('events', $events);
+    }
+    public function denied()
+    {
+        $status = 'denied';
+        $events = Events::where('status', $status)->get();
+        return view('admin_denied')->with('events', $events);
+    }
+    public function finished()
+    {
+        $status = 'approved';
+        $today = date('Y-m-d H:i:s');
+        $events = Events::where('end_date','<', $today)->where('status', $status)->get();
+        return view('admin_finished')->with('events', $events);
     }
 
     public function approve($id)

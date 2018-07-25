@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -15,13 +14,10 @@
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-       
 
     </head>
     <body>
-   
-
-
+    
 <div class="container">
 <div class="jumbotron"><h2 align="center">Admin panel</h2>
 <p align="center" class="text text-muted">Welcome mr. {{ Auth::user()->name }}.</p></div>
@@ -39,7 +35,7 @@
     <hr>
     
     <table class="table">
-    <h3>Pending reservation requests</h3>
+    <h3>Finished events</h3>
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -48,8 +44,7 @@
       <th scope="col">Email</th>
       <th scope="col">Type</th>
       <th scope="col">Number of participants</th>
-      <th scope="col">Approve?</th>
-      <th scope="col">Deny?</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -61,20 +56,6 @@
       <td>{{$event->email}}</td>
       <td>{{$event->type}}</td>
       <td>{{$event->participants}}</td>
-      <td>
-      <form action="{{route('events.approve', $event->id) }}" enctype="multipart/form-data" method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="_method" value="PUT">
-        <button type="submit" class="btn btn-success">APPROVE</button>
-      </form>
-      </td>
-      <td>
-      <form action="{{route('events.deny', $event->id) }}" enctype="multipart/form-data" method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="_method" value="PUT">
-        <button type="submit" class="btn btn-danger">DENY</button>
-      </form>
-      </td>
     </tr>
     @endforeach
   </tbody>
