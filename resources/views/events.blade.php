@@ -82,6 +82,43 @@
                                     </div>
                             </div>
                         </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                            {!! Form::label('participants', 'Number of participants:') !!}
+                                <div class="">
+                                {!! Form::text('participants', null, ['class'=>'form-control']) !!}
+                                {!! $errors->first('participants', '<p class="alert alert-danger">:message</p>') !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                            {!! Form::label('organizer', 'Organizer:') !!}
+                                <div class="">
+                                {!! Form::text('organizer', null, ['class'=>'form-control']) !!}
+                                {!! $errors->first('organizer', '<p class="alert alert-danger">:message</p>') !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                            {!! Form::label('email', 'Organizers email:') !!}
+                                <div class="">
+                                {!! Form::text('email', null, ['class'=>'form-control']) !!}
+                                {!! $errors->first('email', '<p class="alert alert-danger">:message</p>') !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                            {!! Form::label('type', 'Type of event') !!}
+                                <div class="">
+                                {!! Form::text('type', null, ['class'=>'form-control']) !!}
+                                {!! $errors->first('type', '<p class="alert alert-danger">:message</p>') !!}
+                                </div>
+                            </div>
+                        </div>
+
 
 
           

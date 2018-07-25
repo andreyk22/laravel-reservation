@@ -42,6 +42,7 @@ class EventsController extends Controller
             'end_date' => 'required',
             'start_time' => 'required',
             'end_time' => 'required',
+            'participants' => 'required',
 
         ]);
         if ($validator->fails()) {
@@ -55,6 +56,10 @@ class EventsController extends Controller
         $event->end_time = $request['end_time'].':00';
         $event->start_date = $request['start_date'];
         $event->end_date = $request['end_date'];
+        $event->participants = $request['participants'];
+        $event->organizer = $request['organizer'];
+        $event->email = $request['email'];
+        $event->type = $request['type'];
         $event->status = 'pending';
         $event->save();
 
