@@ -46,7 +46,7 @@ class EventsController extends Controller
 
         ]);
         if ($validator->fails()) {
-            \Session::flash('warning','Please enter values');
+            \Session::flash('warning','Unesite sve potrebne podatke!');
             return Redirect::to('/')->withInput()->withErrors($validator);
         }
 
@@ -63,7 +63,7 @@ class EventsController extends Controller
         $event->status = 'pending';
         $event->save();
 
-        \Session::flash('success', 'Request is successfully sent.');
+        \Session::flash('success', 'Zahtev uspešno poslat. O njegovom statusu bićete obavješteni naknadno putem emaila.');
         return Redirect::to('/');
         
     }

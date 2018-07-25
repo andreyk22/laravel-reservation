@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<meta http-equiv="refresh" content="2;url=/admin">
 
 @section('content')
 <div class="container">
@@ -14,7 +15,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Uspešno ste se logovali {{ Auth::user()->name }}. Uskoro ćete biti redirektovani na admin panel.
                 </div>
             </div>
         </div>

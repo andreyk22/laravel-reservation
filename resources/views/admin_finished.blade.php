@@ -20,14 +20,14 @@
     
 <div class="container">
 <div class="jumbotron"><h2 align="center">Admin panel</h2>
-<p align="center" class="text text-muted">Welcome mr. {{ Auth::user()->name }}.</p></div>
+<p align="center" class="text text-muted">Dobrodošli {{ Auth::user()->name }}.</p></div>
 <div class="container-fluid">
         <div class="row">
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="/admin" class="btn btn-info" role="button">Dashboard</a></li>
-                <li class="list-inline-item"><a href="/admin/finished" class="btn btn-success" role="button">Finished events</a></li>
-                <li class="list-inline-item"><a href="/admin/denied" class="btn btn-danger" role="button">Denied events</a></li>
-                <li class="list-inline-item"><a href="/logout" class="btn btn-default" role="button">Logout</a></li>
+                <li class="list-inline-item"><a href="/admin/finished" class="btn btn-success" role="button">Završeni događaji</a></li>
+                <li class="list-inline-item"><a href="/admin/denied" class="btn btn-danger" role="button">Odbijeni zahtevi</a></li>
+                <li class="list-inline-item"><a href="/logout" class="btn btn-default" role="button">Odjava</a></li>
             </ul>
             <br>
         </div>
@@ -35,15 +35,15 @@
     <hr>
     
     <table class="table">
-    <h3>Finished events</h3>
+    <h3>Završeni događaji</h3>
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Organizer</th>
+      <th scope="col">Naziv</th>
+      <th scope="col">Organizator</th>
       <th scope="col">Email</th>
-      <th scope="col">Type</th>
-      <th scope="col">Number of participants</th>
+      <th scope="col">Vrsta događaja</th>
+      <th scope="col">Broj učesnika</th>
       
     </tr>
   </thead>
