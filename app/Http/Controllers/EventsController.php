@@ -7,20 +7,24 @@ use Illuminate\Support\Facades\Redirect;
 use Calendar;
 use Validator;
 use App\Events;
+use App\Http\Controllers\DateTime;
 
 class EventsController extends Controller
 {
     public function index()
     {
+        
         $events = Events::get();
         $event_list = [];
         foreach ($events as $key => $event) {
             if ($event->status == 'approved') {
                 $event_list[] = Calendar::event(
                     $event->event_name,
-                    true,
-                    new \DateTime($event->start_date),
-                    new \DateTime($event->end_date. ' +1 day')
+                    false,
+                    new \DateTime($event->start_date.' '.$event->start_time),
+                    new \DateTime($event->end_date.' '.$event->end_time)
+                    // new \DateTime($event->end_date. ' +1 day')
+                    
                 );
             }
            
@@ -36,6 +40,8 @@ class EventsController extends Controller
             'event_name' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
 
         ]);
         if ($validator->fails()) {
@@ -45,6 +51,8 @@ class EventsController extends Controller
 
         $event = new Events;
         $event->event_name = $request['event_name'];
+        $event->start_time = $request['start_time'].':00';
+        $event->end_time = $request['end_time'].':00';
         $event->start_date = $request['start_date'];
         $event->end_date = $request['end_date'];
         $event->status = 'pending';

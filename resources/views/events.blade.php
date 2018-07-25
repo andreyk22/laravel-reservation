@@ -13,10 +13,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+        <script src="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
- 
+             
         {!! $calendar_details->script() !!}
-     
+       
+        
     </head>
     <body>
             <div class="content">
@@ -62,6 +64,27 @@
                                     </div>
                             </div>
                         </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <div class="form-group">
+                                {!! Form::label('start_time', 'Start time:') !!}
+                                    <div class="">
+                                        {!! Form::time('start_time', null, ['class'=>'form-control']) !!}
+                                        {!! $errors->first('start_name', '<p class="alert alert-danger">:message</p>') !!}
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <div class="form-group">
+                                {!! Form::label('end_time', 'End time:') !!}
+                                    <div class="">
+                                        {!! Form::time('end_time', null, ['class'=>'form-control']) !!}
+                                        {!! $errors->first('end_name', '<p class="alert alert-danger">:message</p>') !!}
+                                    </div>
+                            </div>
+                        </div>
+
+
+          
 
                         <div class="col-xs-1 col-sm-1 col-md-1"> &nbsp; <br/>
                         {!! Form::submit('Add Event', ['class'=>'btn btn-primary']) !!}
@@ -87,12 +110,4 @@
         </script> -->
     </body>
     <footer class="page-footer font-small blue">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="http://facebook.com/notoriousec"> Andrej Kastratovic.</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
 </html>
