@@ -26,7 +26,5 @@ Route::get('/admin/finished', 'AdminController@finished');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', 'Auth\LoginController@logout');
 Auth::routes();
-Route::get('/admin/mailApproved/{id}', 'AdminController@mailApproved');
-Route::put('/admin/mailApproved{id}', 'AdminController@mailApproved');
 
 
