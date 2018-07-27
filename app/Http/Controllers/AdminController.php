@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Events;
+use Mail;
 
 class AdminController extends Controller
 {
@@ -13,8 +14,10 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function __construct()
     {
+
         $this->middleware('auth');
     }
      public function index()
@@ -44,8 +47,26 @@ class AdminController extends Controller
         $events->status = $status;
         $events->save();
         \Session::flash('success', 'Event approved successfully.');
-        return Redirect::to('/admin');
+        $this->mailApproved($id);
+       
+        return Redirect::to('/admin/');
+
     }
+
+    public function mailApproved($id)
+    {
+        $mailID = $id;
+        Mail::send(['text' => 'approved_mail'], ['name','Društveni centar Rudo'], function($message) use ($mailID){
+            $event = Events::find($mailID);
+            $mailto = $event->email;
+            $message->to($mailto,'To net')->subject('Društveni centar - Zahtjev odobren');
+            $message->from('andrej.kastratovic@gmail.com','Društveni centar Rudo');
+        });
+        // \Session::flash('success', 'Event approved successfully.');
+        // return Redirect::to('/admin');
+        
+    }
+
     public function deny($id)
     {
         $events = Events::find($id);
@@ -53,7 +74,22 @@ class AdminController extends Controller
         $events->status = $status;
         $events->save();
         \Session::flash('success', 'Event reservation denied successfully.');
+        $this->mailDenied($id);
         return Redirect::to('/admin');
+    }
+
+    public function mailDenied($id)
+    {
+        $mailID = $id;
+        Mail::send(['text' => 'denied_mail'], ['name','Društveni centar Rudo'], function($message) use ($mailID){
+            $event = Events::find($mailID);
+            $mailto = $event->email;
+            $message->to($mailto,'To net')->subject('Društveni centar - Zahtjev odbijen');
+            $message->from('andrej.kastratovic@gmail.com','Andrej');
+        });
+        // \Session::flash('success', 'Event approved successfully.');
+        // return Redirect::to('/admin');
+        
     }
 
     /**
